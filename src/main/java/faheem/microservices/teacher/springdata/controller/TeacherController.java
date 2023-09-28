@@ -4,6 +4,7 @@ import faheem.microservices.teacher.springdata.dto.TeacherDto;
 import faheem.microservices.teacher.springdata.mapper.UtilityMapping;
 import faheem.microservices.teacher.springdata.model.Teacher;
 import faheem.microservices.teacher.springdata.service.TeacherService;
+import faheem.microservices.teacher.springdata.wrapper.TeacherCourseWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,11 @@ public class TeacherController {
     public List<Teacher> getAllTeachers(){
         log.info("TeacherController.getAllTeachers() method is called...");
         return teacherService.getAllTeachers();
+    }
+
+    @GetMapping("/wrapper/{teacherId}/{courseId}")
+    public TeacherCourseWrapper getTeacherWithCourseById(@PathVariable("teacherId") Integer teacherId,@PathVariable("courseId") Integer courseId) throws Exception {
+       return teacherService.getTeacherWithCourseById(teacherId,courseId);
     }
 
 }
