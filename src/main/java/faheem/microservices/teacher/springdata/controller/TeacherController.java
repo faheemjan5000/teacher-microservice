@@ -19,9 +19,9 @@ public class TeacherController {
     private TeacherService teacherService;
 
     @PostMapping("/add")
-    public Teacher addTeacher(@RequestBody() TeacherDto teacherDto){
+    public Teacher addTeacher(@RequestBody() Teacher teacher){
         log.info("TeacherController.addTeacher() method is called...");
-        Teacher teacher = UtilityMapping.mapTeacherDtoToTeacher(teacherDto);
+        //Teacher teacher = UtilityMapping.mapTeacherDtoToTeacher(teacherDto);
         Teacher teacherSaved = teacherService.saveTeacher(teacher);;
         if(teacherSaved!=null){
             log.info("Successfully added a new Teacher!");
